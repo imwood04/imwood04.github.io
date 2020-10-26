@@ -1,0 +1,18 @@
+/*Changes Background for Devices under 600px (Mainly Mobile)*/
+@media only screen and (max-width: 600px) {
+    body{
+        background-image: url("https://cdn.discordapp.com/attachments/758498981717999636/758769771016618004/20200924_151726.jpg");
+        background-color: #cccccc;
+        object-fit: cover;
+        background-repeat: no-repeat;
+    }
+}
+/*Changed Background for Devices over 600px Tablets/Laptops/Computer Ect.*/
+@media only screen and (min-width: 600px) {
+    body{
+        background-image: url("https://cdn.discordapp.com/attachments/758498981717999636/758769771016618004/20200924_151726.jpg");
+        background-color: #cccccc;
+        background-size: 110%;
+        background-repeat: no-repeat;
+    }
+}
