@@ -127,3 +127,8 @@ img.darrow {
     font-size: 30px;
     color: #d4d4dc;
 }
+h6 {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
