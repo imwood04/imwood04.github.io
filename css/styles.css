@@ -132,3 +132,21 @@ h6 {
     justify-content: center;
     color: white;
 }
+span::before{
+    content: "Coder";
+    animation: animate infinite 5s;
+    padding-left: 10px;
+}
+@keyframes animate {
+    0% {
+        content: "Coder";
+    }
+
+    50% {
+        content: "Youtuber";
+    }
+
+    75% {
+        content: "Coder";
+    }
+}
