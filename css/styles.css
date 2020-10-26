@@ -110,3 +110,8 @@
         right: 0;
     }
 }
+
+.welcome {
+    font-size: 30px;
+    color: #d4d4dc;
+}
