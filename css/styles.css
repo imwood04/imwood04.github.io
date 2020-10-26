@@ -17,6 +17,19 @@
     }
 }
 
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+}
+img.darrow {
+    width: 120px;
+    height: auto;
+    text-align: center
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -110,7 +123,12 @@
         right: 0;
     }
 }
-
+img.logo {
+    position: absolute;
+    top: 18px;
+    left: 140px;
+    width: 50px;
+}
 .welcome {
     font-size: 30px;
     color: #d4d4dc;
