@@ -49,6 +49,7 @@ img.darrow {
     margin: 0;
     padding: 0;
     font-family: "montserrat",sans-serif;
+    box-sizing: border-box;
 }
 .header{
     height: 100px;
@@ -60,8 +61,8 @@ img.darrow {
     line-height: 100px;
     float: left;
     text-transform: uppercase;
+    font-size: 4vh;
 }
-
 .menu{
     float: right;
     line-height: 100px;
@@ -72,6 +73,7 @@ img.darrow {
     text-decoration: none;
     padding: 0 10px;
     transition: 0.4s;
+    z-index: 99;
 }
 .show-menu-btn,.hide-menu-btn{
     transition: 0.4s;
@@ -90,13 +92,11 @@ img.darrow {
 .hide-menu-btn:hover{
     color: #3498db;
 }
-
 #chk{
     position: absolute;
     visibility: hidden;
     z-index: -1111;
 }
-
 .content{
     padding: 0 20px;
 }
@@ -108,7 +108,7 @@ img.darrow {
 .content p{
     text-align: justify;
 }
-
+/*Detects If pixels go under 800 if so brings up menu button*/
 @media screen and (max-width:800px) {
     .show-menu-btn,.hide-menu-btn{
         display: block;
@@ -124,10 +124,12 @@ img.darrow {
         padding: 80px 0;
         line-height: normal;
         transition: 0.7s;
+        z-index: 98;
     }
     .menu a{
         display: block;
-        padding: 20px;
+        padding: 5vh;
+        z-index: 98;
     }
     .hide-menu-btn{
         position: absolute;
@@ -162,11 +164,4 @@ img.darrow {
     position: relative;
     top: -10px;
     z-index: 97;
-}
-.footer {
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: black;
-    text-align: center;
 }
