@@ -164,5 +164,9 @@ span::before {
     50% {
         content: "Youtuber";
     }
+    
+    75% {
+        content: "Designer";
+    }
 
 }
