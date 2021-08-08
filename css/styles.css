@@ -152,7 +152,7 @@ h6 {
 
 span::before {
     content: "Coder";
-    animation: animate infinite 5s;
+    animation: animate infinite 7s;
     padding-left: 10px;
 }
 
