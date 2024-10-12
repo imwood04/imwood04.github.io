@@ -1,0 +1,19 @@
+/*Changes Background for Devices under 600px (Mainly Mobile)*/
+@media only screen and (max-width: 600px) {
+    body {
+        background-image: url(//assests/background-gradient.png);
+        background-color: #3C3D37;
+        object-fit: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+/*Changed Background for Devices over 600px Tablets/Laptops/Computer Ect.*/
+@media only screen and (min-width: 600px) {
+    body {
+        background-image: url(//assests/background-gradient.png);
+        background-color: #3C3D37;
+        background-size: 110%;
+        background-repeat: no-repeat;
+    }
+}
