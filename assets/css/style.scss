@@ -337,6 +337,16 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .card__meta { display: flex; flex-wrap: wrap; gap: var(--s2); margin: var(--s2) 0 0; }
 
+/* A card with no link (private repo): same frame, none of the affordances
+   that promise somewhere to go. */
+.card__link--static { cursor: default; }
+.card__link--static:hover {
+  border-color: var(--rule);
+  transform: none;
+  box-shadow: none;
+}
+.card__link--static .card__title { color: var(--ink); }
+
 .tag {
   display: inline-flex;
   align-items: center;
@@ -362,6 +372,11 @@ a:hover { text-decoration-thickness: 2px; }
 .tag--lang[data-lang="C#"]::before     { background: #178600; }
 .tag--lang[data-lang="HTML"]::before   { background: #E34C26; }
 .tag--lang[data-lang="JavaScript"]::before { background: #F1E05A; }
+
+.tag--private {
+  border-color: color-mix(in srgb, var(--shu) 45%, transparent);
+  color: var(--shu);
+}
 
 /* --------------------------------------------------------- repo list 一覧 */
 

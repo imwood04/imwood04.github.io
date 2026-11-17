@@ -13,12 +13,17 @@
   stars: 2
   url: https://github.com/imwood04/MCMMO-MCPE-
 
-- name: NaGames-Website
-  title: NaGames
-  blurb: Official NaGames Website
-  language: CSS
-  stars: 2
-  url: https://github.com/imwood04/NaGames-Website
+# Private: no `url`, so this renders as a static card rather than a link that
+# would 404 for every visitor. `name` should match the real repository name if
+# you ever make it public, so it gets de-duplicated from the list below.
+#
+# TODO(imwood04): the blurb is the only thing I could state truthfully without
+# being able to read the repo. Replace it with what the bot actually does.
+- name: NaGames-Bot
+  title: NaGames Bot
+  blurb: Discord bot for the NaGames server.
+  language: Python
+  private: true
 
 - name: Simple-Fly
   title: Simple-Fly

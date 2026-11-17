@@ -1,11 +1,17 @@
 {%- assign p = include.project -%}
 <li class="card">
+  {%- comment -%}
+    A project with no `url` renders as a static card rather than a dead link
+    — private repositories 404 for everyone but the owner, so linking one
+    would be worse than not linking it at all.
+  {%- endcomment -%}
+  {%- if p.url -%}
   <a class="card__link" href="{{ p.url }}" target="_blank" rel="noopener noreferrer">
-    <h3 class="card__title">{{ p.title | default: p.name }}</h3>
-    <p class="card__blurb">{{ p.blurb }}</p>
-    <p class="card__meta">
-      {%- if p.language %}<span class="tag tag--lang" data-lang="{{ p.language }}">{{ p.language }}</span>{% endif -%}
-      {%- if p.stars and p.stars > 0 %}<span class="tag">★ {{ p.stars }}</span>{% endif -%}
-    </p>
+    {%- include project-card-body.html project=p -%}
   </a>
+  {%- else -%}
+  <div class="card__link card__link--static">
+    {%- include project-card-body.html project=p -%}
+  </div>
+  {%- endif -%}
 </li>
