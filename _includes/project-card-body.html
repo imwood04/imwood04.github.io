@@ -1,0 +1,12 @@
+{%- comment -%}
+  Card contents, shared by the linked and unlinked variants in
+  project-card.html so the markup only exists once.
+{%- endcomment -%}
+{%- assign p = include.project -%}
+<h3 class="card__title">{{ p.title | default: p.name }}</h3>
+<p class="card__blurb">{{ p.blurb }}</p>
+<p class="card__meta">
+  {%- if p.language %}<span class="tag tag--lang" data-lang="{{ p.language }}">{{ p.language }}</span>{% endif -%}
+  {%- if p.stars and p.stars > 0 %}<span class="tag">★ {{ p.stars }}</span>{% endif -%}
+  {%- if p.private %}<span class="tag tag--private">Private repo</span>{% endif -%}
+</p>
