@@ -1,0 +1,7 @@
+<component name="DependencyValidationManager">
+  <!-- Hand-written project files only. Excludes generated output, installed
+       gems, and Gemfile.lock (whose base64 checksums read as thousands of
+       spelling mistakes). -->
+  <scope name="Source"
+         pattern="!file:vendor//*&amp;&amp;!file:_site//*&amp;&amp;!file:.bundle//*&amp;&amp;!file:node_modules//*&amp;&amp;!file:.jekyll-cache//*&amp;&amp;!file:Gemfile.lock" />
+</component>

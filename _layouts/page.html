@@ -1,0 +1,14 @@
+---
+layout: default
+---
+{%- comment -%}
+  Prose pages. Wrapping the body here means Markdown sources need no inline
+  HTML — and so no kramdown `markdown="1"` attribute, which is not valid HTML
+  and trips up editors.
+{%- endcomment -%}
+<section class="wrap section">
+  {% include section-rule.html jp=page.jp en=page.en id=page.anchor %}
+  <div class="prose">
+    {{ content }}
+  </div>
+</section>

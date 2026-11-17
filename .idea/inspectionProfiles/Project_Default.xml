@@ -1,0 +1,42 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+
+    <!-- ==================================================================
+         Liquid false positives.
+
+         Jekyll builds every URL through filters the IDE cannot evaluate
+         ({{ '/x' | relative_url }}), and page <title> / section ids come
+         from {% include %}. The IDE reads those as broken links and missing
+         elements. Nothing here can be fixed in source without giving up
+         Liquid, so these three are off project-wide.
+
+         `jekyll build` + `jekyll doctor` are the real link check; both are
+         clean. Run them before pushing.
+         ================================================================== -->
+    <inspection_tool class="HtmlUnknownTarget" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="HtmlRequiredTitleElement" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="HtmlUnknownAnchorTarget" enabled="false" level="WARNING" enabled_by_default="false" />
+
+    <!-- ==================================================================
+         Spelling: on, but only for hand-written files. The project
+         dictionary (.idea/dictionaries/project.xml) carries the Japanese
+         romaji, Liquid keywords and gem names this site legitimately uses.
+         ================================================================== -->
+    <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
+      <scope name="Source" level="TYPO" enabled="true">
+        <option name="processCode" value="true" />
+        <option name="processLiterals" value="true" />
+        <option name="processComments" value="true" />
+      </scope>
+    </inspection_tool>
+
+    <!-- ==================================================================
+         Prose style checking on code comments and a technical README
+         flags domain terms and deliberate phrasing. Grammar errors that
+         matter are caught in review, not here.
+         ================================================================== -->
+    <inspection_tool class="GrazieInspection" enabled="false" level="GRAMMAR_ERROR" enabled_by_default="false" />
+    <inspection_tool class="LanguageDetectionInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+  </profile>
+</component>
