@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {%- include head.html -%}
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  {%- include icons.svg -%}
+
+  <header class="masthead">
+    <a class="masthead__brand" href="{{ '/' | relative_url }}">
+      {%- include seal.html class="seal--sm" -%}
+      <span class="masthead__name">imwood04</span>
+    </a>
+    {%- include nav.html -%}
+  </header>
+
+  <main id="main" class="main">
+    {{ content }}
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      {%- include seal.html class="seal--xs" -%}
+      <p class="footer__credit">Made by imwood04 / Zero2_</p>
+      <p class="footer__jp"><span lang="ja">木を見て森を見ず</span>
+        <span class="footer__gloss">— can't see the forest for the trees</span></p>
+    </div>
+  </footer>
+
+  <script src="{{ '/assets/js/nav.js' | relative_url }}" defer></script>
+  {%- if page.repos -%}
+  <script src="{{ '/assets/js/repos.js' | relative_url }}" defer
+          data-user="{{ site.github_username }}"
+          data-featured="{% for p in site.data.projects %}{{ p.name }}{% unless forloop.last %},{% endunless %}{% endfor %}"></script>
+  {%- endif -%}
+</body>
+</html>

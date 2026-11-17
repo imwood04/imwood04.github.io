@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 判子 favicon: 木 on 朱色. Standalone file, so colours are literal. -->
+  <style>
+    .ground { fill: #B7352D; }
+    .ink    { stroke: #ECDFCC; }
+    @media (prefers-color-scheme: dark) {
+      .ground { fill: #E8705F; }
+      .ink    { stroke: #1E201E; }
+    }
+  </style>
+  <rect class="ground" x="1.5" y="1.5" width="61" height="61" rx="5"/>
+  <g class="ink" fill="none" stroke-width="5.5" stroke-linecap="square">
+    <path d="M13 26h38"/>
+    <path d="M32 12v41"/>
+    <path d="M31 31 16 50"/>
+    <path d="M33 31 48 50"/>
+  </g>
+</svg>

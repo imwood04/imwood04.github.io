@@ -1,0 +1,12 @@
+- jp: ホーム
+  en: Home
+  url: /
+- jp: 自己
+  en: About
+  url: /about/
+- jp: 作品
+  en: Works
+  url: /#works
+- jp: 連絡
+  en: Contact
+  url: /social/

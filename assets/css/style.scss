@@ -1,0 +1,529 @@
+---
+# Empty front matter tells Jekyll to compile this file through Sass.
+---
+
+/* ===========================================================================
+   和 — imwood04.github.io
+   Ink on unbleached paper. Traditional-color (伝統色) tokens, inverted at
+   night. No background images: the ground texture is generated.
+   =========================================================================== */
+
+:root {
+  /* 伝統色 — traditional colors; see README for measured contrast ratios */
+  --sumi:     #1E201E;   /* 墨     ink        */
+  --kinari:   #ECDFCC;   /* 生成り  paper      */
+  --shu:      #B7352D;   /* 朱色    vermilion  */
+  --matsuba:  #697565;   /* 松葉色  pine green */
+  --nibi:     #595857;   /* 鈍色    grey       */
+
+  --ink:      var(--sumi);
+  --paper:    var(--kinari);
+  --muted:    var(--nibi);
+  --rule:     color-mix(in srgb, var(--matsuba) 55%, transparent);
+  --lattice:  color-mix(in srgb, var(--matsuba) 6%, transparent);
+  --card-bg:  color-mix(in srgb, var(--kinari) 70%, #fff);
+
+  --font-display: "Shippori Mincho", "Noto Serif JP", Georgia, serif;
+  --font-body: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* 間 — spacing scale */
+  --s1: .25rem;  --s2: .5rem;   --s3: .75rem;  --s4: 1rem;
+  --s5: 1.5rem;  --s6: 2rem;    --s7: 3rem;    --s8: 4.5rem;
+  --s9: 7rem;
+
+  --measure: 62ch;
+  --container: 68rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:     var(--kinari);
+    --paper:   var(--sumi);
+    /* #B7352D is only 1.85:1 on sumi. #E8705F cleared the ground but still
+       failed on the card fill (3.3:1), so the accent brightens and the fill
+       darkens until card titles clear 4.5:1. */
+    --shu:     #EE7E6C;
+    --matsuba: #8A9684;
+    --muted:   #B8B2A7;
+    --lattice: color-mix(in srgb, var(--matsuba) 8%, transparent);
+    --card-bg: color-mix(in srgb, var(--sumi) 90%, var(--kinari));
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  /* Keeps the footer at the bottom of the viewport on short pages
+     (404, contact) instead of floating halfway up. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: clamp(1rem, calc(.96rem + .2vw), 1.0625rem);
+  line-height: 1.75;
+  /* 麻の葉 — a triangular lattice, the skeleton of the asanoha motif.
+     Three gradient layers, no image request. --lattice is already low-alpha,
+     so the weave reads as texture rather than plaid. */
+  background-image:
+    repeating-linear-gradient( 60deg, var(--lattice) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(-60deg, var(--lattice) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(  0deg, var(--lattice) 0 1px, transparent 1px 38px);
+}
+
+h1, h2, h3, .masthead__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: .01em;
+}
+
+a { color: var(--shu); text-underline-offset: .18em; }
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--shu);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: var(--s3);
+  background: var(--shu);
+  color: var(--kinari);
+  padding: var(--s3) var(--s5);
+  border-radius: 3px;
+  z-index: 100;
+}
+.skip:focus { left: var(--s4); }
+
+.u-en { font-family: var(--font-body); font-size: .72em; letter-spacing: .08em; }
+
+/* ---------------------------------------------------------------- seal 判子 */
+
+.seal { display: block; width: 3.25rem; height: 3.25rem; flex: none; }
+.seal--sm { width: 2.25rem; height: 2.25rem; }
+.seal--xs { width: 1.5rem; height: 1.5rem; }
+.seal--lg { width: 5.5rem; height: 5.5rem; }
+
+/* ------------------------------------------------------------- masthead 頭 */
+
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: var(--s3) clamp(var(--s4), 4vw, var(--s7));
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.masthead__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  color: inherit;
+  text-decoration: none;
+  min-width: 0;
+}
+.masthead__name {
+  font-size: 1.25rem;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------ nav 品 */
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--s3), 2vw, var(--s6));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  color: var(--ink);
+  text-decoration: none;
+  padding: var(--s2) var(--s1);
+  border-bottom: 2px solid transparent;
+  transition: color .25s, border-color .25s;
+}
+.nav__jp { font-family: var(--font-display); font-size: 1rem; line-height: 1.1; }
+.nav__en {
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .25s;
+}
+.nav__link:hover { color: var(--shu); border-bottom-color: var(--shu); }
+.nav__link:hover .nav__en { color: var(--shu); }
+.nav__link[aria-current="page"] { border-bottom-color: var(--shu); }
+
+.nav__toggle { display: none; }
+
+/* ------------------------------------------------------------- layout 配置 */
+
+.main { flex: 1 0 auto; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(var(--s4), 5vw, var(--s7));
+}
+
+/* ------------------------------------------------------------------ hero 序 */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--s6);
+  align-items: center;
+  padding-block: clamp(var(--s7), 12vh, var(--s9));
+}
+
+.hero__seal { margin-bottom: var(--s5); }
+
+.hero__title {
+  font-size: clamp(2.75rem, calc(2rem + 4vw), 5rem);
+  margin: 0 0 var(--s3);
+  letter-spacing: .02em;
+}
+
+.hero__role {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, calc(1rem + .6vw), 1.5rem);
+  color: var(--muted);
+  margin: 0 0 var(--s5);
+  min-height: 1.6em;           /* reserve the line so rotation can't reflow */
+}
+.hero__role-jp {
+  color: var(--ink);
+  transition: opacity .4s ease;
+}
+.hero__role-jp.is-fading { opacity: 0; }
+.hero__role-en {
+  font-family: var(--font-body);
+  font-size: .62em;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-left: .6em;
+}
+
+.hero__intro {
+  max-width: 46ch;
+  color: var(--muted);
+  margin: 0 0 var(--s6);
+}
+
+.hero__actions { display: flex; flex-wrap: wrap; gap: var(--s3); }
+
+/* 縦書き — vertical side rail */
+.rail {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: var(--font-display);
+  font-size: clamp(.95rem, calc(.85rem + .4vw), 1.2rem);
+  letter-spacing: .34em;
+  color: var(--matsuba);
+  margin: 0;
+  padding-left: var(--s4);
+  border-left: 1px solid var(--rule);
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+/* ----------------------------------------------------------------- button */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-family: var(--font-display);
+  font-size: .95rem;
+  text-decoration: none;
+  padding: var(--s3) var(--s5);
+  border: 1px solid var(--shu);
+  color: var(--shu);
+  background: transparent;
+  border-radius: 2px;
+  transition: background .25s, color .25s;
+}
+.btn:hover { background: var(--shu); color: var(--paper); }
+.btn--ghost { border-color: var(--rule); color: var(--ink); }
+.btn--ghost:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ------------------------------------------------- section heading 作品 ─── */
+
+.rule {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s4);
+  margin: 0 0 var(--s6);
+  font-size: clamp(1.4rem, calc(1.2rem + .8vw), 2rem);
+  scroll-margin-top: 6rem;
+}
+.rule__jp { flex: none; letter-spacing: .12em; }
+.rule__line { flex: 1 1 auto; height: 1px; background: var(--rule); }
+.rule__en {
+  flex: none;
+  font-family: var(--font-body);
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.section { padding-block: clamp(var(--s7), 9vh, var(--s8)); }
+
+/* ------------------------------------------------------------- cards 作品 */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: var(--s4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card { display: flex; }
+.card__link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  flex: 1;
+  padding: var(--s5);
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+}
+.card__link:hover {
+  border-color: var(--shu);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px -12px var(--sumi);
+}
+.card__title {
+  font-size: 1.15rem;
+  margin: 0;
+  color: var(--shu);
+}
+.card__blurb {
+  margin: 0;
+  font-size: .9rem;
+  color: var(--muted);
+  flex: 1;
+}
+.card__meta { display: flex; flex-wrap: wrap; gap: var(--s2); margin: var(--s2) 0 0; }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  font-size: .7rem;
+  letter-spacing: .06em;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: .1rem .55rem;
+}
+.tag--lang::before {
+  content: "";
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--matsuba);
+}
+.tag--lang[data-lang="Python"]::before { background: #3572A5; }
+.tag--lang[data-lang="C++"]::before    { background: #F34B7D; }
+.tag--lang[data-lang="PHP"]::before    { background: #4F5D95; }
+.tag--lang[data-lang="CSS"]::before    { background: #663399; }
+.tag--lang[data-lang="C#"]::before     { background: #178600; }
+.tag--lang[data-lang="HTML"]::before   { background: #E34C26; }
+.tag--lang[data-lang="JavaScript"]::before { background: #F1E05A; }
+
+/* --------------------------------------------------------- repo list 一覧 */
+
+.repos { list-style: none; margin: 0; padding: 0; }
+.repos__item { border-bottom: 1px solid var(--rule); }
+.repos__item:first-child { border-top: 1px solid var(--rule); }
+
+.repos__link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s2) var(--s4);
+  padding: var(--s4) var(--s2);
+  color: inherit;
+  text-decoration: none;
+  transition: background .2s, padding-left .2s;
+}
+.repos__link:hover {
+  background: color-mix(in srgb, var(--matsuba) 12%, transparent);
+  padding-left: var(--s4);
+}
+.repos__name { font-family: var(--font-display); font-size: 1.02rem; color: var(--shu); }
+.repos__desc { flex: 1 1 14rem; font-size: .86rem; color: var(--muted); }
+.repos__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  margin-left: auto;              /* rows without a description align too */
+  font-size: .72rem;
+  color: var(--muted);
+}
+
+.repos-status { color: var(--muted); font-size: .9rem; }
+
+/* ------------------------------------------------------------ prose 文章 */
+
+.prose { max-width: var(--measure); }
+.prose p { margin: 0 0 var(--s4); }
+.prose h2 { margin: var(--s7) 0 var(--s4); }
+.prose ul { padding-left: 1.1rem; }
+.prose li { margin-bottom: var(--s2); }
+.lede { font-size: 1.15rem; color: var(--ink); }
+
+/* -------------------------------------------------------- social list 連絡 */
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--s4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.links__link {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  padding: var(--s5);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .25s, transform .25s;
+}
+.links__link:hover { border-color: var(--shu); transform: translateY(-3px); }
+.links__icon { width: 1.75rem; height: 1.75rem; flex: none; fill: currentColor; }
+.links__link:hover .links__icon { fill: var(--shu); }
+.links__name { font-family: var(--font-display); font-size: 1.05rem; display: block; }
+.links__handle { font-size: .78rem; color: var(--muted); }
+
+/* ----------------------------------------------------------------- footer */
+
+.footer {
+  border-top: 1px solid var(--rule);
+  margin-top: var(--s8);
+  padding-block: var(--s6);
+}
+.footer__inner {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(var(--s4), 5vw, var(--s7));
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s5);
+}
+.footer__credit { margin: 0; font-size: .82rem; color: var(--muted); }
+.footer__jp {
+  margin: 0 0 0 auto;
+  font-family: var(--font-display);
+  font-size: .82rem;
+  color: var(--matsuba);
+  letter-spacing: .1em;
+}
+.footer__gloss { font-family: var(--font-body); font-size: .68rem; letter-spacing: .04em; }
+
+/* ------------------------------------------------------------- responsive */
+
+@media (max-width: 48rem) {
+  .hero { grid-template-columns: 1fr; }
+
+  /* 縦書き does not survive a narrow column — lay the rail flat. */
+  .rail {
+    writing-mode: horizontal-tb;
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+    padding-left: 0;
+    padding-top: var(--s4);
+    letter-spacing: .24em;
+  }
+
+  .masthead { flex-wrap: wrap; }
+
+  .nav__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    font-family: var(--font-display);
+    font-size: .95rem;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: var(--s2) var(--s4);
+    cursor: pointer;
+  }
+  .nav__toggle-bars {
+    width: 1rem; height: 2px; background: currentColor;
+    box-shadow: 0 5px currentColor, 0 -5px currentColor;
+  }
+  .nav__toggle-label { display: inline-flex; align-items: baseline; gap: .4em; }
+
+  .nav__menu {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    padding-top: var(--s3);
+  }
+  .nav__menu.is-open { display: flex; }
+
+  .nav__link {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--s3);
+    padding: var(--s4) var(--s2);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav__link[aria-current="page"] { border-bottom-color: var(--shu); }
+
+  .footer__jp { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card__link:hover, .links__link:hover { transform: none; }
+}

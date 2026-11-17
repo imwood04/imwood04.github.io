@@ -1,0 +1,33 @@
+<nav class="nav" aria-label="Primary">
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+    <span class="nav__toggle-bars" aria-hidden="true"></span>
+    <span class="nav__toggle-label"><span lang="ja">メニュー</span><span class="u-en">Menu</span></span>
+  </button>
+  <ul class="nav__menu" id="nav-menu">
+    {%- for item in site.data.nav -%}
+    {%- assign current = false -%}
+    {%- if item.url == '/' and page.url == '/' -%}{%- assign current = true -%}
+    {%- elsif item.url != '/' and page.url contains item.url -%}{%- assign current = true -%}
+    {%- endif -%}
+    <li class="nav__item">
+      {%- comment -%}
+        The anchor is written out in full on both branches, rather than
+        tucking a conditional inside the tag or inside the aria-current
+        value. Costs two duplicated spans; buys markup that is literal,
+        valid HTML either way.
+      {%- endcomment -%}
+      {%- if current -%}
+      <a class="nav__link" href="{{ item.url | relative_url }}" aria-current="page">
+        <span class="nav__jp" lang="ja">{{ item.jp }}</span>
+        <span class="nav__en">{{ item.en }}</span>
+      </a>
+      {%- else -%}
+      <a class="nav__link" href="{{ item.url | relative_url }}">
+        <span class="nav__jp" lang="ja">{{ item.jp }}</span>
+        <span class="nav__en">{{ item.en }}</span>
+      </a>
+      {%- endif -%}
+    </li>
+    {%- endfor -%}
+  </ul>
+</nav>

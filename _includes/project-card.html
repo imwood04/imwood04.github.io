@@ -1,0 +1,11 @@
+{%- assign p = include.project -%}
+<li class="card">
+  <a class="card__link" href="{{ p.url }}" target="_blank" rel="noopener noreferrer">
+    <h3 class="card__title">{{ p.title | default: p.name }}</h3>
+    <p class="card__blurb">{{ p.blurb }}</p>
+    <p class="card__meta">
+      {%- if p.language %}<span class="tag tag--lang" data-lang="{{ p.language }}">{{ p.language }}</span>{% endif -%}
+      {%- if p.stars and p.stars > 0 %}<span class="tag">★ {{ p.stars }}</span>{% endif -%}
+    </p>
+  </a>
+</li>

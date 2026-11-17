@@ -1,0 +1,20 @@
+# 連絡 — where to find me. `icon` matches a symbol id in _includes/icons.svg.
+- name: GitHub
+  handle: "@imwood04"
+  url: https://github.com/imwood04
+  icon: github
+
+- name: YouTube
+  handle: Channel
+  url: https://www.youtube.com/channel/UCxY7FPVjhflBVA1AH8loQmA
+  icon: youtube
+
+- name: Discord
+  handle: Join the server
+  url: https://discord.gg/UB3yCwX
+  icon: discord
+
+- name: X
+  handle: "@imwood04"
+  url: https://twitter.com/imwood04
+  icon: x

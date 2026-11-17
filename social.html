@@ -1,0 +1,31 @@
+---
+layout: default
+title: Contact
+permalink: /social/
+redirect_from:
+  # Only the .html form. jekyll-redirect-from writes an extensionless path
+  # to that same .html file, so listing both collides. GitHub Pages already
+  # falls back from /pages/Social to /pages/Social.html.
+  - /pages/Social.html
+description: Where to find imwood04 — GitHub, YouTube, Discord and X.
+---
+
+<section class="wrap section">
+  {% include section-rule.html jp="連絡" en="Elsewhere" id="contact" %}
+
+  <ul class="links">
+    {%- for s in site.data.social -%}
+    <li>
+      <a class="links__link" href="{{ s.url }}" target="_blank" rel="noopener noreferrer">
+        <svg class="links__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <use href="#i-{{ s.icon }}"/>
+        </svg>
+        <span>
+          <span class="links__name">{{ s.name }}</span>
+          <span class="links__handle">{{ s.handle }}</span>
+        </span>
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+</section>

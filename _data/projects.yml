@@ -1,0 +1,51 @@
+# Featured works — 作品
+#
+# NOTE: the `blurb` values below are your own GitHub repo descriptions, pulled
+# verbatim. They were written as repo one-liners, not as portfolio copy.
+# Rewrite them when you get a chance — this is the half of the site a visitor
+# actually reads. Anything listed here is automatically excluded from the
+# auto-fetched "all repositories" list further down the page.
+
+- name: MCMMO-MCPE-
+  title: MCMMO for MCPE
+  blurb: "MCMMO in MCPE :)"
+  language: PHP
+  stars: 2
+  url: https://github.com/imwood04/MCMMO-MCPE-
+
+- name: NaGames-Website
+  title: NaGames
+  blurb: Official NaGames Website
+  language: CSS
+  stars: 2
+  url: https://github.com/imwood04/NaGames-Website
+
+- name: Simple-Fly
+  title: Simple-Fly
+  blurb: >-
+    A PocketMine-MP flight plugin — grant the imwood04.fly permission
+    and players get /fly.
+  language: PHP
+  stars: 0
+  url: https://github.com/imwood04/Simple-Fly
+
+- name: BroadCaster
+  title: BroadCaster
+  blurb: Just another one of the simple broadcast plugins for pmmp
+  language: PHP
+  stars: 0
+  url: https://github.com/imwood04/BroadCaster
+
+- name: Python-Refresh
+  title: Python Refresh
+  blurb: Touching up on my Python — a lot of random things
+  language: Python
+  stars: 0
+  url: https://github.com/imwood04/Python-Refresh
+
+- name: CPP-Learning
+  title: C++ Learning
+  blurb: My cpp/C++ files for things I'm learning
+  language: C++
+  stars: 0
+  url: https://github.com/imwood04/CPP-Learning

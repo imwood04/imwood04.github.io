@@ -1,41 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>imwood04</title>
-    <link href="css/styles.css" rel="stylesheet">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-    </style>
-</head>
-<body>
-<div class="header">
-    <h2 class="logo">imwood04</h2>
-    <input id="chk" type="checkbox">
-    <label class="show-menu-btn" for="chk">
-        <i class="fas fa-ellipsis-h"></i>
-    </label>
-    <ul class="menu">
-        <a href="#" span title="Home Page">Home</a>
-        <a href="https://imwood04.github.io/pages/about.html" span title="About Me">About</a>
-        <a href="https://discord.gg/UB3yCwX" span target="_blank" title="Join our discord!">Discord</a>
-        <a href="https://imwood04.github.io/pages/Social" span title="Our social links!">Social</a>
-        <label class="hide-menu-btn" for="chk">
-            <i class="fas fa-times"></i>
-        </label>
-    </ul>
-</div>
-<div style="text-align: center;">
-    <p class="welcome"><b>Welcome To my Website!</b></p><br>
-    <h6 class="iAm" style="font-size: 20px">I am a<span></span></h6>
-    <br>
-</div>
-<div class="footer">
-    <h2>Made by imwood04 / Zero2_</h2>
-</div>
-</body>
-</html>
+---
+layout: default
+repos: true
+description: >-
+  imwood04 — PocketMine-MP plugins in PHP, Python tooling, and work in
+  progress across C++ and C#.
+---
+
+<section class="wrap hero">
+  <div class="hero__body">
+    {%- include seal.html class="seal--lg hero__seal" -%}
+    <h1 class="hero__title">imwood04</h1>
+
+    <p class="hero__role" id="role">
+      <span class="hero__role-jp" lang="ja">開発者</span><span class="hero__role-en">developer</span>
+    </p>
+
+    <p class="hero__intro">
+      I build server plugins, small tools and the occasional website.
+      Mostly PHP and Python, currently working through C++ and C#.
+    </p>
+
+    <div class="hero__actions">
+      <a class="btn" href="#works"><span lang="ja">作品</span> <span class="u-en">See the work</span></a>
+      <a class="btn btn--ghost" href="{{ '/about/' | relative_url }}"><span lang="ja">自己</span> <span class="u-en">About</span></a>
+    </div>
+  </div>
+
+  <p class="rail" lang="ja" aria-hidden="true">手を動かして学ぶ</p>
+</section>
+
+<section class="wrap section">
+  {% include section-rule.html jp="作品" en="Selected works" id="works" %}
+
+  <ul class="cards">
+    {%- for project in site.data.projects -%}
+      {% include project-card.html project=project %}
+    {%- endfor -%}
+  </ul>
+</section>
+
+<section class="wrap section">
+  {% include section-rule.html jp="一覧" en="Everything else" id="all" %}
+
+  <div id="repos">
+    <p class="repos-status">Loading repositories…</p>
+  </div>
+</section>
+
+<script src="{{ '/assets/js/role.js' | relative_url }}" defer></script>

@@ -1,1 +1,16 @@
-.idea/
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock
+vendor/
+.bundle/
+
+node_modules/
+
+# IDE: ignore per-machine state, but share the inspection profile,
+# dictionary and scope so the Problems panel is clean for everyone.
+.idea/*
+!.idea/inspectionProfiles/
+!.idea/dictionaries/
+!.idea/scopes/

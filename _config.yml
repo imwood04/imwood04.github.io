@@ -1,0 +1,26 @@
+title: imwood04
+tagline: 開発者 / developer
+description: >-
+  Portfolio of imwood04 — PocketMine-MP plugins, Python tooling,
+  and things built while learning C++ and C#.
+url: https://imwood04.github.io
+baseurl: ""
+
+github_username: imwood04
+author: imwood04 / Zero2_
+
+permalink: pretty
+
+plugins:
+  - jekyll-redirect-from
+
+sass:
+  style: compressed
+
+exclude:
+  - .idea
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .gitignore

@@ -1,0 +1,15 @@
+{%- comment -%}
+  判子 — hanko seal bearing 木 (ki/moku, meaning wood), the root of the
+  name imwood04. The glyph is drawn as strokes rather than text, so it
+  renders identically whether the Japanese webfont has loaded or not.
+  Decorative here: the accessible name belongs on whatever wraps it.
+{%- endcomment -%}
+<svg class="seal {{ include.class }}" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <rect x="1.5" y="1.5" width="61" height="61" rx="5" fill="var(--shu)"/>
+  <g fill="none" stroke="var(--kinari)" stroke-width="5.5" stroke-linecap="square">
+    <path d="M13 26h38"/>
+    <path d="M32 12v41"/>
+    <path d="M31 31 16 50"/>
+    <path d="M33 31 48 50"/>
+  </g>
+</svg>
